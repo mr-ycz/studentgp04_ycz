@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ycz.dao.RoleMapper">
+    <select id="queryRoleByName" resultType="string">
+        SELECT role_ycz.rolename FROM user_ycz
+            JOIN user_role_ycz ON user_ycz.id=user_role_ycz.user_id
+            JOIN role_ycz ON user_role_ycz.role_id=role_ycz.id
+        WHERE username=#{username}
+    </select>
+</mapper>

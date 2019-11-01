@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ycz.dao.ClazMapper">
+    <insert id="insertClaz">
+        insert into claz_ycz(clazname,create_time) values(#{clazname},#{createTime})
+    </insert>
+
+    <select id="selectAll" resultType="com.ycz.pojo.Claz">
+        select * from claz_ycz
+    </select>
+    <select id="selectStudentByClazId" resultType="com.ycz.pojo.User">
+        select * from user_ycz where claz_id=#{id} and status=2
+    </select>
+</mapper>

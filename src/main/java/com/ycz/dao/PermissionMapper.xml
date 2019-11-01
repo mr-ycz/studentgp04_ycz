@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ycz.dao.PermissionMapper">
+    <select id="queryPermissionByName" resultType="java.lang.String">
+        SELECT perms_ycz.perm FROM user_ycz
+            JOIN user_role_ycz ON user_ycz.id=user_role_ycz.user_id
+            JOIN role_ycz ON user_role_ycz.role_id=role_ycz.id
+            JOIN role_perms_ycz ON role_perms_ycz.role_id=role_ycz.id
+            JOIN perms_ycz ON perms_ycz.id=role_perms_ycz.perm_id
+        WHERE username=#{username}
+    </select>
+</mapper>
