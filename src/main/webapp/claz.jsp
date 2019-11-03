@@ -36,9 +36,8 @@
                     <fmt:formatDate value="${claz.createTime}" pattern="yyyy-MM-dd" />
                 </td>
                 <shiro:hasRole name="teacher">
-                    <td colspan="2">
+                    <td>
                         <a href="${pageContext.request.contextPath}/claz/queryStu?id=${claz.id}">查看学生</a>
-                        <a href="#">修改</a>
                     </td>
                 </shiro:hasRole>
             </tr>

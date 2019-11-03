@@ -6,6 +6,9 @@
 
 <mapper namespace="com.ycz.dao.UserMapper">
     <insert id="insertUser">
+        <selectKey resultType="integer" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert into user_ycz(username,password,salt,gender,regist_time,status)
         values(#{username},#{password},#{salt},#{gender},#{registTime},#{status})
     </insert>
@@ -21,5 +24,8 @@
     </select>
     <select id="selectAllNoClaz" resultType="com.ycz.pojo.User">
         select * from user_ycz where claz_id is null
+    </select>
+    <select id="selectUserById" resultType="com.ycz.pojo.User">
+        select * from user_ycz where id=#{id}
     </select>
 </mapper>

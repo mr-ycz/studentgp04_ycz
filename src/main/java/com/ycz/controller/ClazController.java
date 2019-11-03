@@ -98,7 +98,32 @@ public class ClazController {
 
         queryStu(clazid, model, 0, request);
 
-        return null;
+        return "redirect:/claz/queryStu?id="+id+"&pageNum="+0;
+    }
+
+    /**
+     * 修改学生界面
+     */
+    @GetMapping("/updStu")
+    public String updStu(Integer id, Model model){
+
+        User user=userService.queryUserByUserId(id);
+
+        model.addAttribute("user", user);
+
+        return "updateStu";
+    }
+
+    /**
+     * 修改学生信息
+     */
+    @PostMapping("/updateStu")
+    public String updateStu(User user, HttpServletRequest request){
+
+        Integer id = (Integer) request.getSession().getAttribute("id");
+
+        userService.updateUser(user.getId(), user.getClazId());
+        return "redirect:/claz/queryStu?id="+id+"&pageNum="+0;
     }
 
 }

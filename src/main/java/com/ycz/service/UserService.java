@@ -14,4 +14,6 @@ public interface UserService {
     List<User> queryAllNoClaz();
 
     void updateUser(Integer stuId, Integer clazid);
+
+    User queryUserByUserId(Integer id);
 }

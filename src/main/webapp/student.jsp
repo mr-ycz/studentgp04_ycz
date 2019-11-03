@@ -39,6 +39,9 @@
                     <fmt:formatDate value="${s.registTime}" pattern="yyyy-MM-dd" />
                 </td>
                 <td>${s.clazId}</td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/claz/updStu?id=${s.id}">修改</a>
+                </td>
             </tr>
         </c:forEach>
     </table>

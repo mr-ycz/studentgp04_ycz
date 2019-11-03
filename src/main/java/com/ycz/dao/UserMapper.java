@@ -15,4 +15,6 @@ public interface UserMapper {
     List<User> selectAllNoClaz();
 
     void updateUser(@Param("stuId") Integer stuId,@Param("clazId") Integer clazId);
+
+    User selectUserById(Integer id);
 }

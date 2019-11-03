@@ -2,6 +2,8 @@ package com.ycz.controller;
 
 import com.ycz.pojo.User;
 import com.ycz.pojo.UserVo;
+import com.ycz.service.PermissionService;
+import com.ycz.service.RoleService;
 import com.ycz.service.UserService;
 import com.ycz.utils.Captcha2;
 import org.apache.shiro.SecurityUtils;
@@ -29,6 +31,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private PermissionService permissionService;
 
     /**
      * 登录页面
@@ -72,8 +78,10 @@ public class UserController {
         }else {
             user.setStatus(2);
         }
-
         userService.addUser(user);
+
+        roleService.addRoleUser(user);
+
         return "login";
     }
 
